@@ -1,0 +1,1 @@
+cmd_/home/user/GitHubStoof/OperatingSystems/ass2/modules/copy_device.ko := ld -r -m elf_x86_64 -z max-page-size=0x200000 -T ./scripts/module-common.lds --build-id  -o /home/user/GitHubStoof/OperatingSystems/ass2/modules/copy_device.ko /home/user/GitHubStoof/OperatingSystems/ass2/modules/copy_device.o /home/user/GitHubStoof/OperatingSystems/ass2/modules/copy_device.mod.o ;  true
