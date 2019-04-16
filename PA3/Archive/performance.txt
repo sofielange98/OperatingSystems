@@ -1,0 +1,55 @@
+Performance Analysis of multi-lookup program
+
+~~~Scenario 1~~~
+Number for requester thread = 1
+Number for resolver thread = 1
+Total Runtime : 19591829 ms or 19.59 seconds
+Thread 4023600896 serviced 5 files.
+
+~~~Scenario 2~~~
+Number for requester thread = 2
+Number for resolver thread = 3
+Total Runtime : 10342107 ms or 10.34 seconds
+Thread 273463040 serviced 2 files.
+Thread 281855744 serviced 3 files.
+
+~~~Scenario 3~~~
+Number for requester thread = 3
+Number for resolver thread = 1
+Total Runtime : 11472577 ms or 11.47 seconds
+Thread 285579008 serviced 1 files.
+Thread 293971712 serviced 2 files.
+Thread 277186304 serviced 2 files.
+
+~~~Scenario 4~~~
+Number for requester thread = 3
+Number for resolver thread = 3
+Total Runtime :  3738317 ms or 3.738 seconds
+Thread 2385286912 serviced 1 files.
+Thread 2402072320 serviced 2 files.
+Thread 2393679616 serviced 2 files.
+
+~~~Scenario 5~~~
+Number for requester thread = 5
+Number for resolver thread = 5
+Total Runtime : 2342425 ms or 2.342 seconds
+Thread 2136987392 serviced 1 files.
+Thread 1977591552 serviced 1 files.
+Thread 2128594688 serviced 1 files.
+Thread 2120201984 serviced 1 files.
+Thread 2111809280 serviced 1 files.
+
+Scenario 6: 8 requester 5 resolver -- N/A (upper limit 5 on requesters)
+Throws error - total runtime : 1200 ms or .0012 seconds
+
+It makes sense that scenario 1 takes the longest, as it is using the minimal amount of threads to do the same amount of work.
+Looking at the graph, the second highest point is the one where you are using 1 : 1.
+
+Scenario 2 and 3 are fairly similar in terms of time. According to the graph, scenario 3 took the most amount of time, but in my results it has been taking on average the same amount of time as scenario 2.
+It makes sense that with an unequal number of producers and consumers this may produce more busy waiting.
+
+With scenario 4, it it easy to see that multi-threading can indeed speed up your program. The speed increases by a factor of about 6 times! Just by adding two additional threads for each task!
+My output matches that of the graph.
+
+Scenario 5 is obviously the fastest. However it is interesting to see that the speed up doesn't increase linearly with the amount of threads.
+After a certain point, on the graph, you can see that it becomes balanced, but is always faster when the number of requesters and resolvers is balanced.
