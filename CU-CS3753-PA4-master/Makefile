@@ -1,5 +1,6 @@
 # CS3753 - PA4
-
+#Make file taken from following:
+#https://github.com/asayler/CU-CS3753-PA4
 CC = gcc
 CFLAGS = -c -g -Wall -Wextra
 LFLAGS = -g -Wall -Wextra

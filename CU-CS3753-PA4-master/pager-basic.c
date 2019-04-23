@@ -17,7 +17,7 @@
  */
 
 #include "simulator.h"
-
+#include <stdio.h>
 void pageit(Pentry q[MAXPROCESSES]) { 
     
     /* Local vars */
@@ -34,6 +34,7 @@ void pageit(Pentry q[MAXPROCESSES]) {
 	    /* Dedicate all work to first active process*/ 
 	    pc = q[proc].pc; 		        // program counter for process
 	    page = pc/PAGESIZE; 		// page the program counter needs
+	    printf("Trying to access page %d \n",page);
 	    /* Is page swaped-out? */
 	    if(!q[proc].pages[page]) {
 		/* Try to swap in */
